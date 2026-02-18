@@ -315,6 +315,93 @@ function renderBookList() {
 }
 
 // ---------------------------------------------------------------------------
+// Page viewer
+// ---------------------------------------------------------------------------
+
+function buildPageViewerHTML(meta, pageNum, content) {
+  const titleSafe   = escapeHtml(meta.title);
+  const contentSafe = escapeHtml(content);
+  return `<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>p.${pageNum} \u2014 ${titleSafe}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans',
+        'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+    .viewer { max-width: 800px; margin: 0 auto; }
+    .viewer-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .book-title-label { font-size: 0.9rem; color: #64748b; margin-bottom: 0.3rem; }
+    .book-title-text  { font-size: 1.15rem; font-weight: 700; color: #1e293b; }
+    .page-label {
+      margin-top: 0.5rem;
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #4f46e5;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      background: #eef2ff;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+    .page-content {
+      font-size: 1.05rem;
+      line-height: 1.85;
+      color: #1e293b;
+      background: #ffffff;
+      padding: 2rem;
+      border-radius: 10px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="viewer">
+    <div class="viewer-header">
+      <div class="book-title-label">\u{1F4DA} \u672C\u306E\u30BF\u30A4\u30C8\u30EB</div>
+      <div class="book-title-text">${titleSafe}</div>
+      <span class="page-label">p.${pageNum}</span>
+    </div>
+    <div class="page-content">${contentSafe}</div>
+  </div>
+</body>
+</html>`;
+}
+
+function openPageViewer(bookId, pageNum) {
+  const meta  = getBookMeta(bookId);
+  const pages = getBookPages(bookId);
+  const page  = pages.find((p) => p.page === pageNum);
+
+  if (!meta || !page) {
+    showError('ページデータが見つかりません。');
+    return;
+  }
+
+  const html = buildPageViewerHTML(meta, pageNum, page.content);
+  const blob = new Blob([html], { type: 'text/html' });
+  const url  = URL.createObjectURL(blob);
+  window.open(url, '_blank');
+}
+
+// ---------------------------------------------------------------------------
 // Render search results
 // ---------------------------------------------------------------------------
 
@@ -333,8 +420,9 @@ function renderResults(results, terms) {
     .map((page) => {
       const excerpt     = extractExcerpt(page.content, terms);
       const highlighted = highlightText(excerpt, terms);
+      // currentBookId と page.page はどちらも安全な値（UUID と整数）
       return `
-        <div class="result-card">
+        <div class="result-card" onclick="openPageViewer('${currentBookId}', ${page.page})">
           <div class="result-page">p.${page.page}</div>
           <div class="result-excerpt">${highlighted}</div>
         </div>

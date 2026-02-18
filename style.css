@@ -248,11 +248,13 @@ body {
   border-radius: 10px;
   padding: 1rem 1.25rem;
   margin-bottom: 0.75rem;
-  transition: box-shadow 0.2s;
+  cursor: pointer;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .result-card:hover {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  border-color: var(--primary-light);
 }
 
 .result-page {
