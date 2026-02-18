@@ -373,9 +373,12 @@ function renderBookList() {
 // Page viewer
 // ---------------------------------------------------------------------------
 
-function buildPageViewerHTML(meta, pageNum, content) {
-  const titleSafe   = escapeHtml(meta.title);
-  const contentSafe = escapeHtml(content);
+function buildPageViewerHTML(meta, pageNum, content, breadcrumb = null) {
+  const titleSafe      = escapeHtml(meta.title);
+  const contentSafe    = escapeHtml(content);
+  const breadcrumbHtml = breadcrumb
+    ? `<div class="page-breadcrumb">${escapeHtml(breadcrumb.join(' > '))}</div>`
+    : '';
   return `<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -400,6 +403,11 @@ function buildPageViewerHTML(meta, pageNum, content) {
     }
     .book-title-label { font-size: 0.9rem; color: #64748b; margin-bottom: 0.3rem; }
     .book-title-text  { font-size: 1.15rem; font-weight: 700; color: #1e293b; }
+    .page-breadcrumb {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
     .page-label {
       margin-top: 0.5rem;
       display: inline-block;
@@ -432,6 +440,7 @@ function buildPageViewerHTML(meta, pageNum, content) {
     <div class="viewer-header">
       <div class="book-title-label">\u{1F4DA} \u672C\u306E\u30BF\u30A4\u30C8\u30EB</div>
       <div class="book-title-text">${titleSafe}</div>
+      ${breadcrumbHtml}
       <span class="page-label">p.${pageNum}</span>
     </div>
     <div class="page-content">${contentSafe}</div>
@@ -450,7 +459,9 @@ function openPageViewer(bookId, pageNum) {
     return;
   }
 
-  const html = buildPageViewerHTML(meta, pageNum, page.content);
+  const tocIndex  = buildTocIndex(getBookToc(bookId));
+  const breadcrumb = findBreadcrumb(tocIndex, pageNum);
+  const html = buildPageViewerHTML(meta, pageNum, page.content, breadcrumb);
   const blob = new Blob([html], { type: 'text/html' });
   const url  = URL.createObjectURL(blob);
   window.open(url, '_blank');
