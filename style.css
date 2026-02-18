@@ -266,6 +266,15 @@ body {
   letter-spacing: 0.06em;
 }
 
+.result-breadcrumb {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .result-excerpt {
   font-size: 0.88rem;
   line-height: 1.8;

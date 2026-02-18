@@ -4,12 +4,14 @@
 const LS_INDEX    = 'booksearch_index';
 const LS_META     = (id) => `booksearch_meta_${id}`;
 const LS_PAGES    = (id) => `booksearch_pages_${id}`;
+const LS_TOC      = (id) => `booksearch_toc_${id}`;
 const LS_SELECTED = 'booksearch_selected';
 
 // --- App state ---
-let currentBookId = null;
-let currentPages  = [];
-let debounceTimer = null;
+let currentBookId   = null;
+let currentPages    = [];
+let currentTocIndex = null;
+let debounceTimer   = null;
 
 // ---------------------------------------------------------------------------
 // Utilities
@@ -52,6 +54,14 @@ function getBookPages(id) {
     return JSON.parse(localStorage.getItem(LS_PAGES(id)) || '[]');
   } catch {
     return [];
+  }
+}
+
+function getBookToc(id) {
+  try {
+    return JSON.parse(localStorage.getItem(LS_TOC(id)));
+  } catch {
+    return null;
   }
 }
 
@@ -127,6 +137,9 @@ function loadBookFromFile(file) {
     try {
       localStorage.setItem(LS_META(id),  JSON.stringify(meta));
       localStorage.setItem(LS_PAGES(id), JSON.stringify(pages));
+      if (Array.isArray(data.table_of_contents)) {
+        localStorage.setItem(LS_TOC(id), JSON.stringify(data.table_of_contents));
+      }
       const index = getBookIndex();
       index.push(id);
       localStorage.setItem(LS_INDEX, JSON.stringify(index));
@@ -134,6 +147,7 @@ function loadBookFromFile(file) {
       // Storage quota exceeded — roll back partial write
       localStorage.removeItem(LS_META(id));
       localStorage.removeItem(LS_PAGES(id));
+      localStorage.removeItem(LS_TOC(id));
       showError('ストレージの容量が不足しています。不要な本を削除してください。');
       return;
     }
@@ -143,6 +157,45 @@ function loadBookFromFile(file) {
   };
 
   reader.readAsText(file);
+}
+
+// ---------------------------------------------------------------------------
+// TOC helpers
+// ---------------------------------------------------------------------------
+
+function buildTocIndex(toc) {
+  if (!Array.isArray(toc) || toc.length === 0) return null;
+
+  const entries = [];
+
+  function traverse(items, ancestors) {
+    for (const item of items) {
+      const crumb = [...ancestors, item.title];
+      entries.push({ page: item.page, breadcrumb: crumb });
+      if (Array.isArray(item.items)) {
+        traverse(item.items, crumb);
+      }
+    }
+  }
+
+  traverse(toc, []);
+  entries.sort((a, b) => a.page - b.page);
+  return entries;
+}
+
+function findBreadcrumb(tocIndex, pageNum) {
+  if (!tocIndex || tocIndex.length === 0) return null;
+
+  let result = null;
+  for (let i = 0; i < tocIndex.length; i++) {
+    const entry = tocIndex[i];
+    if (entry.page > pageNum) break;
+    const nextPage = i + 1 < tocIndex.length ? tocIndex[i + 1].page : Infinity;
+    if (pageNum < nextPage) {
+      result = entry.breadcrumb; // 同ページ複数エントリは最後（最深）を優先
+    }
+  }
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -236,8 +289,9 @@ function highlightText(text, terms) {
 // ---------------------------------------------------------------------------
 
 function selectBook(id) {
-  currentBookId = id;
-  currentPages  = getBookPages(id);
+  currentBookId   = id;
+  currentPages    = getBookPages(id);
+  currentTocIndex = buildTocIndex(getBookToc(id));
   localStorage.setItem(LS_SELECTED, id);
 
   const searchBox = document.getElementById('search-input');
@@ -263,6 +317,7 @@ function deleteBook(id) {
 
   localStorage.removeItem(LS_META(id));
   localStorage.removeItem(LS_PAGES(id));
+  localStorage.removeItem(LS_TOC(id));
 
   const index = getBookIndex().filter((i) => i !== id);
   localStorage.setItem(LS_INDEX, JSON.stringify(index));
@@ -418,12 +473,17 @@ function renderResults(results, terms) {
   countEl.textContent = `${results.length}件`;
   area.innerHTML = results
     .map((page) => {
-      const excerpt     = extractExcerpt(page.content, terms);
-      const highlighted = highlightText(excerpt, terms);
+      const excerpt      = extractExcerpt(page.content, terms);
+      const highlighted  = highlightText(excerpt, terms);
+      const breadcrumb   = findBreadcrumb(currentTocIndex, page.page);
+      const breadcrumbHtml = breadcrumb
+        ? `<div class="result-breadcrumb">${escapeHtml(breadcrumb.join(' > '))}</div>`
+        : '';
       // currentBookId と page.page はどちらも安全な値（UUID と整数）
       return `
         <div class="result-card" onclick="openPageViewer('${currentBookId}', ${page.page})">
           <div class="result-page">p.${page.page}</div>
+          ${breadcrumbHtml}
           <div class="result-excerpt">${highlighted}</div>
         </div>
       `;
