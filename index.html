@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>本の検索システム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>📚 本の検索システム</h1>
+  </header>
+
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div id="error-banner" class="error-banner" hidden></div>
+      <button id="add-book-btn" class="add-book-btn">+ 本を追加</button>
+      <input type="file" id="file-input" accept=".json" hidden>
+
+      <div class="library-header">ライブラリ</div>
+      <div id="book-list" class="book-list"></div>
+    </aside>
+
+    <!-- Main area -->
+    <main class="main-area">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="キーワードで検索（スペース区切りでAND検索）..."
+          disabled
+        >
+        <span id="results-count" class="results-count"></span>
+      </div>
+
+      <div id="results-area" class="results-area">
+        <p class="placeholder">本を選択してください</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

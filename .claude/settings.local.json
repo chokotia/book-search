@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/koich/Desktop/book-search status)",
+      "Bash(git -C /c/Users/koich/Desktop/book-search show 9ad73fe:README.md)"
+    ]
+  }
+}
