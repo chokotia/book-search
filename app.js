@@ -7,6 +7,9 @@ const LS_PAGES    = (id) => `booksearch_pages_${id}`;
 const LS_TOC      = (id) => `booksearch_toc_${id}`;
 const LS_SELECTED = 'booksearch_selected';
 
+// --- External viewer ---
+const VIEWER_BASE_URL = 'https://chokotia.github.io/book-viewer/';
+
 // --- App state ---
 let currentBookId   = null;
 let currentPages    = [];
@@ -128,6 +131,7 @@ function loadBookFromFile(file) {
     const id = crypto.randomUUID();
     const meta = {
       title:       data.metadata.title,
+      viewer_id:   data.metadata.viewer_id   ?? null,
       total_pages: data.metadata.total_pages ?? null,
       created_at:  data.metadata.created_at  ?? null,
       savedAt:     new Date().toISOString(),
@@ -459,6 +463,14 @@ function openPageViewer(bookId, pageNum) {
     return;
   }
 
+  // viewer_id があれば外部ビューアーを開く
+  if (meta.viewer_id) {
+    const url = `${VIEWER_BASE_URL}?book=${encodeURIComponent(meta.viewer_id)}&page=${pageNum}`;
+    window.open(url, '_blank');
+    return;
+  }
+
+  // viewer_id がなければ従来どおり Blob を開く
   const tocIndex  = buildTocIndex(getBookToc(bookId));
   const breadcrumb = findBreadcrumb(tocIndex, pageNum);
   const html = buildPageViewerHTML(meta, pageNum, page.content, breadcrumb);

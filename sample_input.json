@@ -1,0 +1,283 @@
+{
+  "metadata": {
+    "title": "AWS教科書 AWS認定ソリューションアーキテクトアソシエイト テキスト＆問題集 第2版 Kindle版",
+    "viewer_id": "aws-saa-v2",
+    "total_pages": 439,
+    "created_at": "2026-02-18T16:08:12"
+  },
+  "table_of_contents": [
+    {
+      "type": "chapter",
+      "title": "序章 AWSクラウド入門",
+      "page": 1,
+      "items": [
+        { "id": "0.1", "title": "クラウドとは", "page": 2 },
+        { "id": "0.2", "title": "クラウドサービスの導入で得られるメリット", "page": 4 },
+        { "id": "0.3", "title": "AWSの主要サービスカテゴリ", "page": 5 },
+        { "id": "0.4", "title": "AWSのサービスへのアクセス", "page": 6 },
+        { "id": "0.5", "title": "グローバルインフラストラクチャ", "page": 7 },
+        { "id": "0.6", "title": "AWS Well-Architectedフレームワーク", "page": 10 }
+      ]
+    },
+    {
+      "type": "part",
+      "title": "第1部：サービス別対策",
+      "page": 14,
+      "items": [
+        {
+          "type": "chapter",
+          "title": "第1章 コンピューティング",
+          "page": 15,
+          "items": [
+            { "id": "1.1", "title": "Amazon Elastic Compute Cloud (Amazon EC2)", "page": 16 },
+            { "id": "1.2", "title": "Amazon EC2 Auto Scaling", "page": 31 },
+            { "id": "1.3", "title": "AWS Elastic Beanstalk", "page": 41 },
+            { "id": "1.4", "title": "AWS Outposts", "page": 44 },
+            { "id": "1.5", "title": "AWS Batch", "page": 46 },
+            { "id": "1.6", "title": "AWS Lambda", "page": 48 },
+            { "id": "1.7", "title": "その他のコンピューティングサービス", "page": 53 },
+            { "id": "1.review", "title": "確認問題", "page": 54 },
+            { "id": "1.answer", "title": "確認問題の解答と解説", "page": 57 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第2章 ストレージ",
+          "page": 61,
+          "items": [
+            { "id": "2.1", "title": "Amazon Simple Storage Service (Amazon S3)", "page": 63 },
+            { "id": "2.2", "title": "Amazon Elastic Block Store (Amazon EBS)", "page": 75 },
+            { "id": "2.3", "title": "Amazon Elastic File System (Amazon EFS)", "page": 82 },
+            { "id": "2.4", "title": "Amazon FSx", "page": 85 },
+            { "id": "2.5", "title": "AWS Backup", "page": 87 },
+            { "id": "2.6", "title": "AWS Storage Gateway", "page": 89 },
+            { "id": "2.review", "title": "確認問題", "page": 92 },
+            { "id": "2.answer", "title": "確認問題の解答と解説", "page": 98 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第3章 ネットワークおよびコンテンツ配信",
+          "page": 101,
+          "items": [
+            { "id": "3.1", "title": "Amazon Virtual Private Cloud (VPC)", "page": 102 },
+            { "id": "3.2", "title": "Amazon Elastic Load Balancing (ELB)", "page": 124 },
+            { "id": "3.3", "title": "Amazon Route 53", "page": 128 },
+            { "id": "3.4", "title": "Amazon CloudFront、AWS Global Accelerator", "page": 133 },
+            { "id": "3.review", "title": "確認問題", "page": 137 },
+            { "id": "3.answer", "title": "確認問題の解答と解説", "page": 140 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第4章 データベース",
+          "page": 143,
+          "items": [
+            { "id": "4.1", "title": "Amazon Relational Database Service (Amazon RDS)", "page": 144 },
+            { "id": "4.2", "title": "Amazon Aurora", "page": 151 },
+            { "id": "4.3", "title": "Amazon DynamoDB", "page": 155 },
+            { "id": "4.4", "title": "Amazon ElastiCache", "page": 162 },
+            { "id": "4.5", "title": "その他のデータベースサービス", "page": 164 },
+            { "id": "4.review", "title": "確認問題", "page": 165 },
+            { "id": "4.answer", "title": "確認問題の解答と解説", "page": 168 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第5章 セキュリティ、アイデンティティ、コンプライアンス",
+          "page": 171,
+          "items": [
+            { "id": "5.1", "title": "AWS Identity and Access Management (IAM)", "page": 173 },
+            { "id": "5.2", "title": "AWS IAM Identity Center (旧AWS Single Sign-On (SSO))", "page": 188 },
+            { "id": "5.3", "title": "AWS Directory Service", "page": 191 },
+            { "id": "5.4", "title": "Amazon Cognito", "page": 193 },
+            { "id": "5.5", "title": "AWS WAF (Webアプリケーションファイアウォール)", "page": 195 },
+            { "id": "5.6", "title": "AWS Shield", "page": 197 },
+            { "id": "5.7", "title": "AWS Certificate Manager (ACM)", "page": 199 },
+            { "id": "5.8", "title": "AWS Key Management Service (AWS KMS)", "page": 201 },
+            { "id": "5.9", "title": "Amazon Macie", "page": 203 },
+            { "id": "5.10", "title": "AWS Secrets Manager", "page": 205 },
+            { "id": "5.11", "title": "Amazon GuardDuty", "page": 207 },
+            { "id": "5.12", "title": "Amazon Inspector", "page": 209 },
+            { "id": "5.13", "title": "その他のセキュリティ、アイデンティティ、コンプライアンスのサービス", "page": 210 },
+            { "id": "5.review", "title": "確認問題", "page": 212 },
+            { "id": "5.answer", "title": "確認問題の解答と解説", "page": 216 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第6章 アプリケーション統合",
+          "page": 219,
+          "items": [
+            { "id": "6.1", "title": "Amazon Simple Queue Service (Amazon SQS)", "page": 220 },
+            { "id": "6.2", "title": "Amazon Simple Notification Service (Amazon SNS)", "page": 226 },
+            { "id": "6.3", "title": "Amazon EventBridge (Amazon CloudWatch Events)", "page": 232 },
+            { "id": "6.4", "title": "AWS Step Functions", "page": 238 },
+            { "id": "6.5", "title": "Amazon MQ", "page": 241 },
+            { "id": "6.6", "title": "Amazon AppFlow", "page": 243 },
+            { "id": "6.review", "title": "確認問題", "page": 244 },
+            { "id": "6.answer", "title": "確認問題の解答と解説", "page": 248 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第7章 アナリティクス",
+          "page": 251,
+          "items": [
+            { "id": "7.1", "title": "Amazon Kinesis", "page": 252 },
+            { "id": "7.2", "title": "AWS Glue", "page": 257 },
+            { "id": "7.3", "title": "Amazon Athena", "page": 260 },
+            { "id": "7.4", "title": "Amazon Redshift", "page": 262 },
+            { "id": "7.5", "title": "Amazon QuickSight", "page": 263 },
+            { "id": "7.6", "title": "Amazon OpenSearch Service (旧Amazon Elasticsearch Service)", "page": 267 },
+            { "id": "7.7", "title": "AWS Lake Formation", "page": 269 },
+            { "id": "7.8", "title": "Amazon EMR (旧Amazon Elastic MapReduce)", "page": 272 },
+            { "id": "7.9", "title": "その他のアナリティクスのサービス", "page": 273 },
+            { "id": "7.review", "title": "確認問題", "page": 274 },
+            { "id": "7.answer", "title": "確認問題の解答と解説", "page": 278 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第8章 管理、モニタリング、ガバナンス",
+          "page": 283,
+          "items": [
+            { "id": "8.1", "title": "Amazon CloudWatch", "page": 284 },
+            { "id": "8.2", "title": "AWS CloudTrail", "page": 292 },
+            { "id": "8.3", "title": "AWS CloudFormation", "page": 294 },
+            { "id": "8.4", "title": "AWS Systems Manager", "page": 296 },
+            { "id": "8.5", "title": "AWS Organizations", "page": 303 },
+            { "id": "8.6", "title": "AWS Trusted Advisor", "page": 305 },
+            { "id": "8.7", "title": "AWS Config", "page": 308 },
+            { "id": "8.8", "title": "その他の管理・モニタリングに関するサービス", "page": 309 },
+            { "id": "8.review", "title": "確認問題", "page": 311 },
+            { "id": "8.answer", "title": "確認問題の解答と解説", "page": 314 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第9章 コンテナ",
+          "page": 317,
+          "items": [
+            { "id": "9.1", "title": "Amazon Elastic Container Service (Amazon ECS)", "page": 320 },
+            { "id": "9.2", "title": "Amazon Elastic Kubernetes Service (Amazon EKS)", "page": 324 },
+            { "id": "9.3", "title": "AWS Fargate", "page": 327 },
+            { "id": "9.4", "title": "Amazon Elastic Container Registry (Amazon ECR)", "page": 329 },
+            { "id": "9.review", "title": "確認問題", "page": 331 },
+            { "id": "9.answer", "title": "確認問題の解答と解説", "page": 334 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第10章 その他のAWSサービス",
+          "page": 337,
+          "items": [
+            { "id": "10.1", "title": "Amazon API Gateway", "page": 338 },
+            { "id": "10.2", "title": "フロントエンドのウェブとモバイルに関するその他のサービス", "page": 345 },
+            { "id": "10.3", "title": "Amazon Comprehend", "page": 346 },
+            { "id": "10.4", "title": "Amazon Comprehend Medical", "page": 349 },
+            { "id": "10.5", "title": "Amazon Textract", "page": 350 },
+            { "id": "10.6", "title": "Amazon Transcribe", "page": 352 },
+            { "id": "10.7", "title": "Amazon Rekognition", "page": 353 },
+            { "id": "10.8", "title": "その他の機械学習のサービス", "page": 355 },
+            { "id": "10.9", "title": "AWS Cost Explorer", "page": 356 },
+            { "id": "10.10", "title": "AWS Budgets", "page": 361 },
+            { "id": "10.11", "title": "AWS Cost and Usage Reports (CUR)", "page": 363 },
+            { "id": "10.12", "title": "AWS Database Migration Service", "page": 366 },
+            { "id": "10.13", "title": "AWS DataSync", "page": 370 },
+            { "id": "10.14", "title": "AWS Transfer Family", "page": 372 },
+            { "id": "10.15", "title": "その他の移行と転送のサービス", "page": 376 },
+            { "id": "10.review", "title": "確認問題", "page": 377 },
+            { "id": "10.answer", "title": "確認問題の解答と解説", "page": 384 }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "part",
+      "title": "第2部：試験分野別対策",
+      "page": 390,
+      "items": [
+        {
+          "type": "chapter",
+          "title": "第11章 第1分野：セキュアなアーキテクチャの設計",
+          "page": 391,
+          "items": [
+            { "id": "11.1", "title": "アクセス制御", "page": 392 },
+            { "id": "11.2", "title": "データ保護", "page": 393 },
+            { "id": "11.3", "title": "多層防御", "page": 394 },
+            { "id": "11.4", "title": "責任共有モデル", "page": 395 },
+            { "id": "11.review", "title": "確認問題", "page": 397 },
+            { "id": "11.answer", "title": "確認問題の解答と解説", "page": 399 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第12章 第2分野：弾力性に優れたアーキテクチャの設計",
+          "page": 401,
+          "items": [
+            { "id": "12.1", "title": "スケーリング", "page": 402 },
+            { "id": "12.2", "title": "疎結合", "page": 403 },
+            { "id": "12.3", "title": "サーバレステクノロジー", "page": 405 },
+            { "id": "12.4", "title": "イベント駆動型アーキテクチャ", "page": 406 },
+            { "id": "12.5", "title": "高可用性と耐障害性", "page": 407 },
+            { "id": "12.review", "title": "確認問題", "page": 409 },
+            { "id": "12.answer", "title": "確認問題の解答と解説", "page": 413 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第13章 第3分野：高パフォーマンスなアーキテクチャの設計",
+          "page": 415,
+          "items": [
+            { "id": "13.1", "title": "ストレージとパフォーマンス", "page": 416 },
+            { "id": "13.2", "title": "コンピューティングとパフォーマンス", "page": 417 },
+            { "id": "13.3", "title": "データベースとパフォーマンス", "page": 417 },
+            { "id": "13.4", "title": "ネットワークアーキテクチャ", "page": 418 },
+            { "id": "13.review", "title": "確認問題", "page": 420 },
+            { "id": "13.answer", "title": "確認問題の解答と解説", "page": 423 }
+          ]
+        },
+        {
+          "type": "chapter",
+          "title": "第14章 第4分野：コストを最適化したアーキテクチャの設計",
+          "page": 425,
+          "items": [
+            { "id": "14.1", "title": "コスト管理", "page": 426 },
+            { "id": "14.2", "title": "ストレージとコスト最適化", "page": 426 },
+            { "id": "14.3", "title": "コンピューティングとコスト最適化", "page": 426 },
+            { "id": "14.4", "title": "データベースとコスト最適化", "page": 427 },
+            { "id": "14.5", "title": "その他のコスト削減策", "page": 428 },
+            { "id": "14.review", "title": "確認問題", "page": 428 },
+            { "id": "14.answer", "title": "確認問題の解答と解説", "page": 432 }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "section",
+      "title": "索引",
+      "page": 435,
+      "items": [
+        { "id": "index-1.0", "title": "索引", "page": 435 }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "page": 1,
+      "filename": "001.txt",
+      "content": "序章\nAWSクラウド入門\n本編に入る前に、本章ではクラウドサービスに関する基礎知識についておさらいをします。クラウドとは何か、クラウドサービスのメリット、AWS のカテゴリ、AWS Well-Architected フレームワークについて学びましょう。\n実務経験がある人や「クラウドプラクティショナー」に合格した人は、本章を飛ばして、第1部「サービス別対策」(p.14)の学習に入っていただいても結構です。"
+    },
+    {
+      "page": 2,
+      "filename": "002.txt",
+      "content": "0.1 クラウドとは\n\nはじめに、クラウドとは何か、クラウドサービスを利用するメリットは何かを紹介します。\n\nクラウドとは、構築済みのリソース（ネットワーク、サーバ、ストレージなど）を、インターネット・社内ネットワーク等のネットワークを経由し、必要に応じて利用できるシステムモデルです。\n\n一方、クラウドとは違い、自社データセンタなどにサーバやストレージの機器を所有し、利用するモデルをオンプレミスといいます。オンプレミスでは、ユーザ自身が機器を所有しているため、各機器に対するカスタマイズなど、細かな制御を行うことができますが、自社内での構築や運用管理が必要です。オンプレミスのシステムは、基本的にインターネットを経由せずに社内ネットワーク内で利用します。\n\n図0.1：オンプレミスとクラウドの違い\n\n所有 ユーザ 自社内で運用・管理 オンプレミス\nクラウドサービスプロバイダが運用・管理 利用 ユーザ クラウド\n\nクラウドでは、クラウドサービスを提供する企業であるクラウドサービスプロバイダが機器などを所有し、運用管理を行います。ユーザは、それらの機器を所有することなく、必要な時に、必要な分のリソースを「利用」することができます。"
+    },
+    {
+      "page": 439,
+      "filename": "439.txt",
+      "content": "お礼とご案内\n\n本書をお読みいただき、誠にありがとうございました。書籍に関する情報は、以下のサイトにて随時更新しております。ぜひご覧ください。\n\n弊社は「誰もが活躍できる未来を切り拓くコンテンツ」の提供を続けてまいります。今後ともご愛顧のほど、何卒よろしくお願い申し上げます。\n\nSE Book\n「翔泳社の本」Web サイト\nhttps://www.shoeisha.co.jp/book\n\nこの電子書籍の全部または一部について、著作権者ならびに株式会社翔泳社に無断で複製（コピー）、転載、公衆送信をすること、改変・改ざんすることを禁じます。また、有償・無償にかかわらずこのデータを第三者に譲渡することを禁じます。\n\n2026年1月27日 電子書籍版発行\n※印刷出版とは異なる表記・表現の場合があります。予めご了承ください。\n※印刷出版再現のため電子書籍としては不要な情報を含んでいる場合があります。\n※本電子書籍は同名出版物を底本として作成しました。"
+    }
+  ]
+}
