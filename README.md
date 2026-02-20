@@ -9,6 +9,7 @@ GitHub Pages で動作する、本の全文検索システムです。外部ラ�
 - **AND 検索** — スペース区切りで複数キーワードを指定すると、すべてを含むページのみ表示（全件・上限なし）
 - **全角・半角対応** — NFKC 正規化により「ＡＩ」と「AI」などを同一視
 - **前回選択を自動復元** — ページリロード後も選択中の本が引き継がれる
+- **外部ビューアー連携** — JSON に `viewer_id` を設定すると、カードクリック時に外部 book-viewer で該当ページを開く
 - **外部依存なし** — 純粋な HTML / CSS / JavaScript のみ（GitHub Pages でそのまま公開可能）
 
 ---
@@ -48,6 +49,7 @@ GitHub Pages で動作する、本の全文検索システムです。外部ラ�
 {
   "metadata": {
     "title": "本のタイトル",
+    "viewer_id": "book-id",
     "total_pages": 134,
     "created_at": "2026-02-18T14:06:30"
   },
@@ -69,6 +71,7 @@ GitHub Pages で動作する、本の全文検索システムです。外部ラ�
 | フィールド | 型 | 必須 | 説明 |
 |---|---|---|---|
 | `metadata.title` | string | ✅ | 本のタイトル（ライブラリ一覧に表示） |
+| `metadata.viewer_id` | string | — | 外部ビューアーの本 ID（設定すると book-viewer で開く、任意） |
 | `metadata.total_pages` | number | — | 総ページ数（任意） |
 | `metadata.created_at` | string | — | 作成日時（ISO 8601、任意） |
 | `pages` | array | ✅ | ページ情報の配列 |
@@ -87,7 +90,7 @@ GitHub Pages で動作する、本の全文検索システムです。外部ラ�
 | キー | 内容 |
 |---|---|
 | `booksearch_index` | 本 ID の配列 (`string[]`) |
-| `booksearch_meta_{id}` | タイトル・総ページ数・作成日時・保存日時 |
+| `booksearch_meta_{id}` | タイトル・viewer_id・総ページ数・作成日時・保存日時 |
 | `booksearch_pages_{id}` | `{ page, content }` の配列 |
 | `booksearch_selected` | 選択中の本の ID |
 
